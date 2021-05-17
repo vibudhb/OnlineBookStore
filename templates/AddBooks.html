@@ -1,0 +1,42 @@
+{% extends 'managerLayout.html' %}
+
+{% block title %}Add Books{% endblock %}
+
+{% block content %}
+<h2>Add Books</h2>
+		<div class="Add Books">
+			<h1>Add Books</h1>
+			<div style="display: flex;">
+			<form action="{{ url_for('addBooks') }}" method="post" autocomplete="off" style="margin: auto;">
+				
+				<input type="text" name="ISBN" placeholder="ISBN" id="ISBN" required>
+				
+				<input type="text" name="Title" placeholder="Title" id="Title" required>
+				
+				<input type="text" name="Author" placeholder="Author" id="Author" required>
+                
+				<input type="text" name="Publisher" placeholder="Publisher" id="Publisher" required>
+                
+				<input type="text" name="Language" placeholder="Language" id= "Language" required>
+                
+				<input type="text" name="Subject" placeholder="Subject" id= "Subject" required>
+
+                
+				<input type="text" name="Publication" placeholder="Publication Date" id="Publication" required>
+
+                
+				<input type="text" name="Stock" placeholder="Stock Level" id="Stock" required>
+
+                
+				<input type="text" name="Pages" placeholder="Pages" id="Pages" required>
+
+                
+				<input type="text" name="Price" placeholder="Price" id="Price" required>
+
+				
+				<input type="submit" value="Add" style="margin: auto;">
+			</form>
+			</div>
+		<div class="msg">{{ msg }}</div>
+		</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Home Page</h2>
+<h3>Sorted Books</h3>
+<table style="width:100%">
+    <thead>
+    <tr>
+        <th style="text-align:left">ISBN</th>
+        <th style="text-align:left">Title</th>
+        <th style="text-align:left">Authors</th>
+        <th style="text-align:left">Publisher</th>
+        <th style="text-align:left">Language</th>
+        <th style="text-align:left">Subject</th>
+        <th style="text-align:left">Publication Date</th>
+        <th style="text-align:left">Price</th>
+        <th style="text-align:left">Add to Cart</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for items in all %} 
+            <tr>
+                <td>
+                    <form action="{{ url_for('showComments') }}" method="post" autocomplete="off" >
+                        <input type="submit" name="booksISBN"  id="booksISBN" value="{{items['ISBN']}}" style="text-align: center;" size="9" readonly>
+                    </form>
+                </td>
+                <td>{{items['Title']}}</td>
+                <td>{{items['Authors']}}</td>
+                <td>{{items['Publisher']}}</td>
+                <td>{{items['Language']}}</td>
+                <td>{{items['Subject']}}</td>
+                <td>{{items['Publication']}}</td>
+                <td>{{items['Price']}}</td>
+                <td>
+                    <form action="{{ url_for('addtocart') }}" method="post" autocomplete="off" >
+                        <input type="submit" name="booksISBN"  id="booksISBN" value="{{items['ISBN']}}" style="text-align: center;" size="9" readonly>
+                    </form>
+                </td>
+
+            
+            </tr>
+        {% endfor %}        
+    </tbody>
+    <div class="msg">{{ msg }}</div>
+</table>
+{% endblock %}

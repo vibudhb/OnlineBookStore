@@ -1,0 +1,55 @@
+{% extends 'managerLayout.html' %}
+
+{% block title %}Manager Home{% endblock %}
+
+{% block content %}
+<h2>Manager Home Page</h2>
+<p>Welcome back manager, {{ username }}!</p>
+<h3>Available Books</h3>
+<div style="display: flex;">
+<form action="{{ url_for('Order') }}" method="post" autocomplete="off" style="margin: auto;">
+    <input type="username" name="username" placeholder="Order By" id="username" required>
+    <input type="submit" value="Order"></form>
+<form action="{{ url_for('Search') }}" method="post" autocomplete="off" style="margin: auto;">
+    <input type="text" name="search" placeholder="Search" id="search" required>
+    <input type="submit" value="Search">
+</form>
+</div>
+<table style="width:100%">
+    <thead>
+    <tr>
+        <th style="text-align:left">ISBN</th>
+        <th style="text-align:left">Title</th>
+        <th style="text-align:left">Authors</th>
+        <th style="text-align:left">Publisher</th>
+        <th style="text-align:left">Language</th>
+        <th style="text-align:left">Subject</th>
+        <th style="text-align:left">Copies Sold</th>
+        <th style="text-align:left">Publication Date</th>
+        <th style="text-align:left">Pages</th>
+        <th style="text-align:left"> Stock Level</th>
+        <th style="text-align:left">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for items in all %} 
+            <tr>
+                <td>{{items['ISBN']}}</td>
+                <td>{{items['Title']}}</td>
+                <td>{{items['Authors']}}</td>
+                <td>{{items['Publisher']}}</td>
+                <td>{{items['Language']}}</td>
+                <td>{{items['Subject']}}</td>
+                <td>{{items['copies_sold']}}</td>
+                <td>{{items['Publication']}}</td>
+                <td>{{items['Pages']}}</td>
+                <td>{{items['Stock']}}</td>
+                <td>{{items['Price']}}</td>
+
+            
+            </tr>
+        {% endfor %}        
+    </tbody>
+    <div class="msg">{{ msg }}</div>
+</table>
+{% endblock %}

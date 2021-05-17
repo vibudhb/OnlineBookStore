@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block title %}Add Comments{% endblock %}
+
+{% block content %}
+<h2>Add Comments</h2>
+
+<table style="width:100%">
+    <thead>
+    <tr>
+        <th style="text-align:left">Title</th>
+        <th style="text-align:left">Description</th>
+        <th style="text-align:left">Rating</th>
+        <th style="text-align:left">ISBN</th>
+        
+    </tr>
+    </thead>
+    <tbody>
+        {% for items in all %} 
+            <tr>
+                <form action="{{ url_for('commitComments') }}" method="post" autocomplete="off" >
+                <td>{{items['Title']}}</td>
+                <td><textarea name="Description" placeholder="Description" id="Description" class="scrollabletextbox"></textarea></td>
+                <td><input type="text" name="Rating" placeholder="Rating" id="Rating" required></td>
+                <td><input type="submit" name="ISBN"  id="ISBN" value="{{items['ISBN']}}" style="text-align: center;" size="9" readonly></td>
+                
+                </form>
+
+            </tr>
+        {% endfor %}        
+    </tbody>
+    <div class="msg">{{ msg }}</div>
+</table>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

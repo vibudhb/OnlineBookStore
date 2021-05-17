@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block title %}ORDERS{% endblock %}
+
+{% block content %}
+<h2>Order</h2>
+<h3>Order Summary</h3>
+<table style="width:100%">
+    <thead>
+    <tr>
+        <th style="text-align:left">Order Id</th>
+        <th style="text-align:left">ISBN</th>
+        <th style="text-align:left">id</th>
+        <th style="text-align:left">Paid</th>
+        <th style="text-align:left">Quantity</th>
+        
+    </tr>
+    </thead>
+    <tbody>
+        {% for items in all %} 
+            <tr>
+                <td>{{items['orderId']}}</td>
+                <td>
+                    <form action="{{ url_for('showComments') }}" method="post" autocomplete="off" >
+                        <input type="submit" name="booksISBN"  id="booksISBN" value="{{items['ISBN']}}" style="text-align: center;" size="9" readonly>
+                    </form>
+                </td>
+                
+                <td>{{items['id']}}</td>
+                <td>${{items['Paid']*items['Items']}}</td>
+                <td>{{items['Items']}}</td>
+
+                
+                
+
+            
+            </tr>
+        {% endfor %}        
+    </tbody>
+    <div class="msg">{{ msg }}</div>
+</table>
+{% endblock %}

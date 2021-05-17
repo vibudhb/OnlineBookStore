@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block title %}Comments{% endblock %}
+
+{% block content %}
+<h2>Showing Comments</h2>
+<table style="width:100%">
+    <thead>
+    <tr>
+        <th style="text-align:left">Title</th>
+        <th style="text-align:left">Authors</th>
+        <th style="text-align:left">Publisher</th>
+        <th style="text-align:left">Description</th>
+        <th style="text-align:left">Rating</th>
+        <th style="text-align:left">Username</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for items in all %} 
+            <tr>
+                <td>{{items['Title']}}</td>
+                <td>{{items['Authors']}}</td>
+                <td>{{items['Publisher']}}</td>
+                <td>{{items['description']}}</td>
+                <td>{{items['rating']}}</td>
+                <td>{{items['id']}}</td>
+            </tr>
+        {% endfor %}        
+    </tbody>
+    <div class="msg">{{ msg }}</div>
+</table>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<h2>Profile Page</h2>
+<div>
+    <p>Your account details are below:</p>
+    <table>
+        <tr>
+            <td>Username:</td>
+            <td>{{ account['id'] }}</td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td>{{ account['password'] }}</td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td>{{ account['full_name'] }}</td>
+        </tr>
+        <tr>
+            <td>Phone:</td>
+            <td>{{ account['phone_number'] }}</td>
+        </tr>
+    </table>
+</div>
+<div style="display: flex;">
+    <form action="{{ url_for('showOtherUsers') }}" method="post" autocomplete="off" >
+        <input type="submit" value="All registered users">
+    </form>
+    
+</div>
+{% endblock %}

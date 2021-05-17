@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %}All Users{% endblock %}
+
+{% block content %}
+
+<h2>All Users</h2>
+
+<table style="width:100%">
+    <thead>
+    <tr>
+        <th style="text-align:left">ID</th>
+        <th style="text-align:left">Full Name</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for items in all %} 
+            <tr>
+                <td>{{items['id']}}</td>
+                <td>{{items['full_name']}}</td>
+            </tr>
+        {% endfor %}        
+    </tbody>
+    <div class="msg">{{ msg }}</div>
+</table>
+{% endblock %}

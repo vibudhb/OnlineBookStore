@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block title %}Cart{% endblock %}
+
+{% block content %}
+<h2>Cart</h2>
+<h3>Cart Items</h3>
+<table style="width:100%">
+    <thead>
+    <tr>
+        <th style="text-align:left">ISBN</th>
+        <th style="text-align:left">Title</th>
+        <th style="text-align:left">Authors</th>
+        <th style="text-align:left">Publisher</th>
+        <th style="text-align:left">Quantity</th>
+        <th style="text-align:left">Price</th>
+        <th style="text-align:left">Delete From Cart</th>
+
+        
+    </tr>
+    </thead>
+    <tbody>
+        {% for items in all %} 
+            <tr>
+                <td>
+                    <form action="{{ url_for('showComments') }}" method="post" autocomplete="off" >
+                        <input type="submit" name="booksISBN"  id="booksISBN" value="{{items['ISBN']}}" style="text-align: center;" size="9" readonly>
+                    </form>
+                </td>
+                <td>{{items['Title']}}</td>
+                <td>{{items['Authors']}}</td>
+                <td>{{items['Publisher']}}</td>
+                <td>{{items['Quantity']}}</td>
+                <td>${{items['Quantity']*items['Price']}}</td>
+                <td>
+                    <form action="{{ url_for('deleteItem') }}" method="post" autocomplete="off" >
+                        <input type="submit" name="booksISBN"  id="booksISBN" value="{{items['ISBN']}}" style="text-align: center;" size="9" readonly>
+                    </form>
+                </td>
+
+                
+                
+
+            
+            </tr>
+        {% endfor %}        
+    </tbody>
+    <div>
+        <form action="{{ url_for('checkout') }}" method="post" autocomplete="off" >
+        <input type="submit" value="Checkout">
+    </form>
+    </div>
+    <div class="msg">{{ msg }}</div>
+</table>
+{% endblock %}
+    

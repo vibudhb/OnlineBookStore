@@ -1,0 +1,25 @@
+{% extends 'managerLayout.html' %}
+
+{% block title %}Add Manager{% endblock %}
+
+{% block content %}
+<h2>Add Manager</h2>
+
+		<div class="Add Manager">
+			<h1>Add manager</h1>
+			<div style="display: flex;">
+			<form action="{{ url_for('Add') }}" method="post" autocomplete="off" style="margin: auto;">
+				
+				<input type="text" name="username" placeholder="Username" id="username" required>
+				
+				<input type="password" name="password" placeholder="Password" id="password" required>
+				
+				<input type="name" name="name" placeholder="Name" id="name" required>
+                
+				<input type="phone" name="phone" placeholder="Phone number" id="phone" required>
+				<div class="msg">{{ msg }}</div>
+				<input type="submit" value="Add">
+			</form>
+			</div>
+		</div>
+{% endblock %}
